@@ -1,0 +1,23 @@
+name: Test Round Robin Simulation Script
+
+on:
+  push:
+    paths:
+      - 'RoundRobin_Simulation.sh'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Make script executable
+        run: chmod +x ./RoundRobin_Simulation.sh
+
+      - name: Run script
+        run: ./RoundRobin_Simulation.sh data.txt 2
+
+      - name: Check output file
+        run: cat output.txt
